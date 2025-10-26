@@ -10,6 +10,7 @@ ENDPOINTS = datos
 
 
 ###     RECOLECTANDO DATA DE RAZAS       ###
+
 races_data = funciones_dnd.devolver_data(URL , ENDPOINTS , "races")
 races_data =  funciones_dnd.devolver_dic_de_lista_dic(races_data , "name" , "url")
 list_races = funciones_generales.devolver_lista_de_diccionario(races_data)
@@ -22,3 +23,4 @@ classes_data = funciones_dnd.devolver_dic_de_lista_dic(classes_data , "name" , "
 list_classes = funciones_generales.devolver_lista_de_diccionario(classes_data)
 
 
+#COMENTARIO RANDOM
