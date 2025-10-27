@@ -4,17 +4,26 @@ import funciones_generales
 import dnd_prueba
 from PIL import Image
 
+###   CALCULA EL BONIFICADOR EN BASE AL PUNTAJE DE CARACTERISTICA  ###
+def calcular_bono(base_point):
+    bonus = int((base_point-10)/2)
+    return bonus
 
-st.set_page_config(page_title="Creación de hoja de personaje" , initial_sidebar_state="collapsed") 
+###   IMPRIME EL VALOR DEL BONIFICADOR, AGREGANDOLE UN + SI ES POSITIVO  ###
+def imprimir_bono(bonificador):
+        if bonificador < 0:
+            st.write(f"{bonificador}")
+        else:
+            st.write(f"+{bonificador}")
+
+
+
+st.set_page_config(page_title="Creación de hoja de personaje") 
 def main ():
-    
-    st.title("Creando hoja de personaje")
-    
-    player_name = st.text_input("Nombre del jugador")
-    character_name = st.text_input("Nombre del personaje")
-    character_last_name = st.text_input("Apellido del personaje")
-    character_race = st.selectbox("Elija una raza:" , dnd_prueba.list_races)
-    character_race = st.multiselect("Elija una clase:", dnd_prueba.list_classes)
-    st.sidebar.title("NAVEGACIÓN")
-    
+    with st.container(border=True , horizontal_alignment="center"):
+        basic_point_wisdom = st.slider("wisdom_sl" , min_value=5,max_value=30 , label_visibility="hidden")
+        bonificador = calcular_bono(basic_point_wisdom)
+        imprimir_bono(bonificador)
+   
 main ()
+
