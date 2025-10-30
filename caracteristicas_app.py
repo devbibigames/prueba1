@@ -2,8 +2,11 @@ import requests
 import dnd_prueba
 import funciones_dnd
 import funciones_generales
+import streamlit as st
 
-base_point = 1
-bonus = int((base_point - 10) / 2)
-
-distribution_points = [8 , 10 , 12 , 13 , 14 , 15]
+atributos = [["Strenght" , "Dexterity"] , ["Constitution" , "Intelligence"] , ["Wisdom" , "Charisma"]]
+columnas = ["col1" , "col2" , "col3"]
+contador = 0
+for col , atributo in zip(columnas , atributos):
+    col = [col , atributo]
+    print(col)

@@ -4,26 +4,30 @@ import funciones_generales
 import dnd_prueba
 from PIL import Image
 
-###   CALCULA EL BONIFICADOR EN BASE AL PUNTAJE DE CARACTERISTICA  ###
-def calcular_bono(base_point):
-    bonus = int((base_point-10)/2)
-    return bonus
 
-###   IMPRIME EL VALOR DEL BONIFICADOR, AGREGANDOLE UN + SI ES POSITIVO  ###
-def imprimir_bono(bonificador):
-        if bonificador < 0:
-            st.write(f"{bonificador}")
-        else:
-            st.write(f"+{bonificador}")
+abilities_list_pares = [["Strenght" , "Dexterity"] , ["Constitution" , "Intelligence"] , ["Wisdom" , "Charisma"]]
 
 
 
 st.set_page_config(page_title="Creación de hoja de personaje") 
+st.title("Bienvenido a la creación de tu hoja de personaje")
+abilities_list_pares = [["Strenght" , "Dexterity"] , ["Constitution" , "Intelligence"] , ["Wisdom" , "Charisma"]]
+col1,col2,col3 = st.columns(3)
+columns = [col1,col2,col3]
+valores = {}
+bonos = {}
+
 def main ():
-    with st.container(border=True , horizontal_alignment="center"):
-        basic_point_wisdom = st.slider("wisdom_sl" , min_value=5,max_value=30 , label_visibility="hidden")
-        bonificador = calcular_bono(basic_point_wisdom)
-        imprimir_bono(bonificador)
-   
+    
+    for col,abilities in zip(columns,abilities_list_pares):
+        with col:
+            for abilitie in abilities:
+                with st.container(border=True):
+                    st.write(abilitie)
+                    valor = st.slider(f"{abilitie}_sl" , min_value=0,max_value=30,step=1, label_visibility="hidden")
+                    valores[abilitie] = valor
+                    bono = funciones_dnd.calcular_bono(valor)
+                    funciones_dnd.imprimir_bono(bono)
+    st.write(valores)
 main ()
 

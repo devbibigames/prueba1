@@ -1,4 +1,5 @@
 import requests
+import streamlit as st
 
 
 #DEVUELVO URL CON JSON 
@@ -24,3 +25,17 @@ def devolver_dic_de_lista_dic(lista_dic , sera_key , sera_value):
         value = item[sera_value]
         diccionario[key] = value
     return diccionario
+
+
+
+###   CALCULA EL BONIFICADOR EN BASE AL PUNTAJE DE CARACTERISTICA  ###
+def calcular_bono(base_point):
+    bonus = int((base_point-10)/2)
+    return bonus
+
+###   IMPRIME EL VALOR DEL BONIFICADOR, AGREGANDOLE UN + SI ES POSITIVO  ###
+def imprimir_bono(bonificador):
+        if bonificador < 0:
+            st.write(f"{bonificador}")
+        else:
+            st.write(f"+{bonificador}")

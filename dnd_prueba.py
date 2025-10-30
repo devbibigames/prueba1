@@ -27,3 +27,4 @@ list_classes = funciones_generales.devolver_lista_de_diccionario(classes_data)
 abilities_data = funciones_dnd.devolver_data(URL , ENDPOINTS , "ability-scores")
 abilities_data = funciones_dnd.devolver_dic_de_lista_dic(abilities_data , "name", "url")
 list_abilities = funciones_generales.devolver_lista_de_diccionario(abilities_data)
+
